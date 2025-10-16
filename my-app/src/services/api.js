@@ -115,20 +115,6 @@ export const recipeAPI = {
     }
   },
 
-  // Get random recipes
-  getRandomRecipes: async (count = 12) => {
-    try {
-      const randomRecipes = await Promise.all(
-        Array.from({ length: count }, () =>
-          apiClient.get('/random.php').then((res) => res.data.meals?.[0])
-        )
-      );
-      return randomRecipes.filter((recipe) => recipe !== null && recipe !== undefined);
-    } catch (error) {
-      throw new Error(`Failed to get random recipes: ${error.message}`);
-    }
-  },
-
   // Smart search - tries name first, then ingredient
   smartSearch: async (query) => {
     try {
