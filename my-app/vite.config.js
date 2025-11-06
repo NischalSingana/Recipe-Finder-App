@@ -9,14 +9,21 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: undefined,
+        format: 'es',
       },
     },
+    target: 'esnext',
+    cssCodeSplit: true,
   },
   preview: {
     port: 4173,
     strictPort: true,
+  },
+  esbuild: {
+    legalComments: 'none',
   },
 })
